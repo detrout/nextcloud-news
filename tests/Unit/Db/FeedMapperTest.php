@@ -17,6 +17,7 @@ use OC\DB\QueryBuilder\Parameter;
 use OC\DB\ResultAdapter;
 use OCA\News\Db\Feed;
 use OCA\News\Db\FeedMapperV2;
+use OCA\News\Db\Item;
 use OCA\News\Utility\Time;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
@@ -44,9 +45,26 @@ class FeedMapperTest extends MapperTestUtility
         $feed1 = new Feed();
         $feed1->setId(4);
         $feed1->resetUpdatedFields();
+        $item_1_1 = new Item();
+        $item_1_1->setId(10);
+        $item_1_1->setFeedId($feed1->getId());
+        $item_1_2->unread = false;
+        $item_1_2 = new Item();
+        $item_1_2->setId(11);
+        $item_1_2->setFeedId($feed1->getId());
+        $item_1_2->unread = true;
+
         $feed2 = new Feed();
         $feed2->setId(5);
         $feed2->resetUpdatedFields();
+        $item_2_1 = new Item();
+        $item_2_1->setId(12);
+        $item_2_1->setFeedId($feed2->getId());
+        $item_2_2->unread = false;
+        $item_2_2 = new Item();
+        $item_2_2->setId(13);
+        $item_2_2->setFeedId($feed2->getId());
+        $item_2_2->unread = true;
 
         $this->feeds = [$feed1, $feed2];
 
