@@ -1,6 +1,6 @@
 name: Integration Tests
 on:
-  pull_request
+  [pull_request, push]
 
 env:
   POSTGRES_PASSWORD: nc_test_db
